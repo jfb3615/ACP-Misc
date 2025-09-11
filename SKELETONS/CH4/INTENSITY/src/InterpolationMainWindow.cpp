@@ -25,8 +25,8 @@ InterpolationMainWindow::InterpolationMainWindow(QWidget *parent,
   ui.quitButton->setShortcut(QKeySequence("q"));
 
   // connect the spin boxes to the refresh method:
-  connect(ui.xSamplesSpinBox, SIGNAL(editingFinished()), this, SLOT(refresh()));
-  connect(ui.ySamplesSpinBox, SIGNAL(editingFinished()), this, SLOT(refresh()));
+  connect(ui.xSamplesSpinBox, SIGNAL(valueChanged(int)), this, SLOT(refresh()));
+  connect(ui.ySamplesSpinBox, SIGNAL(valueChanged(int)), this, SLOT(refresh()));
   
   // display the input file:
   c->pixmap=new QPixmap(filename.c_str());
@@ -67,8 +67,8 @@ void InterpolationMainWindow::refresh() {
   }
   ui.label2->setPixmap(QPixmap::fromImage(*c->gImage));
 
-  double dX= NSAMPLEX==1 ? ui.label2->pixmap()->width()/2 : ui.label2->pixmap()->width()/(NSAMPLEX-1);
-  double dY= NSAMPLEY==1 ? ui.label2->pixmap()->height()/2 : ui.label2->pixmap()->height()/(NSAMPLEY-1);
+  double dX= NSAMPLEX==1 ? ui.label2->pixmap().width()/2 : ui.label2->pixmap().width()/(NSAMPLEX-1);
+  double dY= NSAMPLEY==1 ? ui.label2->pixmap().height()/2 : ui.label2->pixmap().height()/(NSAMPLEY-1);
 
   // This could slow down the application, consider allocating it once and for all.  
   QImage  iImage   = c->pixmap->toImage();
@@ -102,10 +102,10 @@ void InterpolationMainWindow::refresh() {
       static const int WINDOW=10;
       for (int i=-WINDOW;i<=WINDOW;i++){
 	int iXX=iX-i;
-	if (iXX>0 && iXX<ui.label2->pixmap()->width()) {
+	if (iXX>0 && iXX<ui.label2->pixmap().width()) {
 	  for (int j=-WINDOW;j<=WINDOW;j++){
 	    int jYY=jY-j;
-	    if (jYY>0 && jYY<ui.label2->pixmap()->height()) {
+	    if (jYY>0 && jYY<ui.label2->pixmap().height()) {
 	      c->gImage->setPixel(iXX,jYY,zRGB);
 	    }
 	  }

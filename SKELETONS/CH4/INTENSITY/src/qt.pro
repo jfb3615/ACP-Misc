@@ -9,7 +9,7 @@ mac {
 }
 
 
-CONFIG += qt debug c++11
+CONFIG += qt debug c++17
 QT     += widgets
 
 # Input
