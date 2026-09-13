@@ -27,7 +27,7 @@ class Stack {
 
  private:
 
-  unsigned int       m_count;            // Actual length of stack.
-  int                m_data[STACK_MAX];  // An array to store data.
+  unsigned int       m_count={0};            // Actual length of stack.
+  int                m_data[STACK_MAX]={0};  // An array to store data.
 };
 #endif
