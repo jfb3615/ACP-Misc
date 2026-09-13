@@ -1,4 +1,4 @@
-CXXFLAGS = -g -O0 -I..
+CXXFLAGS = -g -O0 -I.. -std=c++20
 LDFLAGS  = -L../local/lib -lStack
 ../local/bin/client:client.cpp ../local/lib/libStack.a
 	mkdir -p ../local/bin

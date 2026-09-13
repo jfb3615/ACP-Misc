@@ -1,8 +1,10 @@
 #ifndef _Stack_h_
 #define _Stack_h_
-#define STACK_MAX 1024
+
 class Stack {
 
+  static constexpr unsigned int STACK_MAX=1024;
+  
  public:
   
   // Constructor:
@@ -25,7 +27,7 @@ class Stack {
 
  private:
 
-  unsigned int       _count;            // Actual length of stack.
-  int                _data[STACK_MAX];  // An array to store data.
+  unsigned int       m_count;            // Actual length of stack.
+  int                m_data[STACK_MAX];  // An array to store data.
 };
 #endif
