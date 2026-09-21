@@ -2,8 +2,6 @@
 #define _Stack_h_
 
 class Stack {
-
-  static constexpr unsigned int STACK_MAX=1024;
   
  public:
   
@@ -26,6 +24,8 @@ class Stack {
   bool isEmpty() const;
 
  private:
+
+  static constexpr unsigned int STACK_MAX=1024;
 
   unsigned int       m_count={0};            // Actual length of stack.
   int                m_data[STACK_MAX]={0};  // An array to store data.
